@@ -1,10 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class APIException extends Equatable implements Exception {
-  const APIException({required this.message, required this.statusCode});
+  APIException({required this.message, required this.statusCode})
+      : assert(
+          statusCode is String || statusCode is int,
+          'StatusCode cannot be a ${statusCode.runtimeType}',
+        );
 
   final String message;
-  final int statusCode;
+  final dynamic statusCode;
 
   @override
   List<Object?> get props => [message, statusCode];
