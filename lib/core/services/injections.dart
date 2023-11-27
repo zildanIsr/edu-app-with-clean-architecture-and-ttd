@@ -1,29 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:education_app/src/authentication/data/datasources/auth_remote_data_source.dart';
+import 'package:education_app/src/authentication/data/repos/auth_repo_impl.dart';
+import 'package:education_app/src/authentication/domain/repositories/auth_repository.dart';
+import 'package:education_app/src/authentication/domain/usecases/forgot_password.dart';
+import 'package:education_app/src/authentication/domain/usecases/sign_in.dart';
+import 'package:education_app/src/authentication/domain/usecases/sign_up.dart';
+import 'package:education_app/src/authentication/domain/usecases/update_user.dart';
+import 'package:education_app/src/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_board_local_data_source.dart';
 import 'package:education_app/src/on_boarding/data/repository/on_board_repo_impl.dart';
 import 'package:education_app/src/on_boarding/domain/repositories/on_boarding_repo.dart';
 import 'package:education_app/src/on_boarding/domain/usecases/chace_first_time.dart';
 import 'package:education_app/src/on_boarding/domain/usecases/check_if_user_first_time.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cb_cubit.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final sl = GetIt.instance;
-
-Future<void> init() async {
-  final prefs = await SharedPreferences.getInstance();
-
-  sl
-    ..registerFactory(
-      () => OnBoardingCbCubit(
-        cacheFirstTime: sl(),
-        checkIfUserIsFirstTime: sl(),
-      ),
-    )
-    ..registerLazySingleton(() => CacheFirstTime(sl()))
-    ..registerLazySingleton(() => CheckIfUserIsFirstTime(sl()))
-    ..registerLazySingleton<OnBoardingRepo>(() => OnBoardRepoImpl(sl()))
-    ..registerLazySingleton<OnBoardLocalDataSource>(
-      () => OnBoardLocalDataSrImpl(sl()),
-    )
-    ..registerLazySingleton(() => prefs);
-}
+part 'injections.main.dart';

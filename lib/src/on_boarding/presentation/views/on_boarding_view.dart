@@ -34,7 +34,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           if (state is OnBoardingStatus && !state.isFirstTime) {
             Navigator.pushReplacementNamed(context, '/home');
           } else if (state is UserCached) {
-            // TODO(User-Cached-Handler): Push to the appropriate screen
+            Navigator.pushReplacementNamed(context, '/');
           }
         },
         builder: (context, state) {
@@ -73,12 +73,12 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                         curve: Curves.easeInOut,
                       );
                     },
-                    effect: const WormEffect(
-                      dotHeight: 10,
-                      dotWidth: 10,
-                      spacing: 40,
+                    effect: WormEffect(
+                      dotHeight: 15,
+                      dotWidth: 15,
+                      spacing: 25,
                       activeDotColor: Colours.primaryColour,
-                      dotColor: Colors.white,
+                      dotColor: Colors.grey.shade200,
                     ),
                   ),
                 ),
