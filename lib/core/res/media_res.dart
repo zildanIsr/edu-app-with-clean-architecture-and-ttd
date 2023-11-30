@@ -7,7 +7,7 @@ class MediaRes {
   static const _baseVectors = 'assets/vectors';
 
   //Images
-  static const defaultUserImg = '$_baseImages/default_user.png';
+  static const defaultUserImg = '$_baseImages/default_users.png';
   static const videoPlaceholderImg = '$_baseImages/video_placeholder.png';
 
   //Lotties

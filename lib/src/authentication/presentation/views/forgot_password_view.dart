@@ -99,7 +99,16 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                         }
                       },
                     ),
-                  )
+                  ),
+                const SizedBox(
+                  height: 15,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Back'),
+                ),
               ],
             ),
           );

@@ -13,7 +13,7 @@ class UserProvider extends ChangeNotifier {
     }
   }
 
-  void iniUser(UserModel? user) {
+  void initUser(UserModel? user) {
     if (_user != user) {
       _user = user;
     }

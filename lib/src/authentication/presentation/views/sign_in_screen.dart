@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
           if (state is AuthError) {
             CoreUtils.showSnackbar(context, state.message);
           } else if (state is SignedIn) {
-            context.userProvider.iniUser(state.user as UserModel);
+            context.userProvider.initUser(state.user as UserModel);
             Navigator.pushReplacementNamed(context, DashboardScreen.routeName);
           }
         },

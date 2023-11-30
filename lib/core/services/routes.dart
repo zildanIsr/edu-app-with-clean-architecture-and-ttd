@@ -34,7 +34,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
               points: 0,
               fullName: user.displayName ?? '',
             );
-            context.userProvider.iniUser(localUser);
+            context.userProvider.initUser(localUser);
             return const DashboardScreen();
           }
           return BlocProvider(

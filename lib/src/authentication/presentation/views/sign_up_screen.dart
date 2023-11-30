@@ -52,7 +52,7 @@ class _SignUpSreenState extends State<SignUpSreen> {
                   ),
                 );
           } else if (state is SignedIn) {
-            context.userProvider.iniUser(state.user as UserModel);
+            context.userProvider.initUser(state.user as UserModel);
             Navigator.pushReplacementNamed(context, DashboardScreen.routeName);
           }
         },
