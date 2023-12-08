@@ -21,6 +21,6 @@ class MediaRes {
   static const casualMeditationVect = '$_baseVectors/casual_meditation.jpg';
   static const casualScienceVect = '$_baseVectors/casual_science.jpg';
   static const casualReadingVect = '$_baseVectors/casual_reading.jpg';
-  static const microscopeVect = '$_baseVectors/microscope.jpg';
+  static const microscopeVect = '$_baseVectors/microscope.png';
   static const streamCupVect = '$_baseVectors/stream_cup.jpg';
 }

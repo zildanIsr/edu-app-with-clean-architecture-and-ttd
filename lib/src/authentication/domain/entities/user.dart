@@ -15,6 +15,8 @@ class LocalUser extends Equatable {
     this.bio,
   });
 
+  bool get isAdmin => email == 'ilyouux1000@gmail.com';
+
   const LocalUser.empty()
       : this(
           uid: '',

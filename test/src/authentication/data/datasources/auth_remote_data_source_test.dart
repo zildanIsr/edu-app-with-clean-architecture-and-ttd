@@ -16,7 +16,7 @@ import 'package:mocktail/mocktail.dart';
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 
-class MockUser extends Mock implements User {
+class MockUserCostum extends Mock implements User {
   String _uid = 'Test uid';
 
   @override
@@ -49,7 +49,7 @@ void main() {
   late AuthRemoteDataSource remoteDataSource;
   late UserCredential userCredential;
   late DocumentReference<DataMap> documentReference;
-  late MockUser mockUser;
+  late MockUserCostum mockUser;
 
   const tUser = UserModel.empty();
 
@@ -63,7 +63,7 @@ void main() {
     await documentReference
         .set(tUser.copyWith(uid: documentReference.id).toMap());
 
-    mockUser = MockUser().._uid = documentReference.id;
+    mockUser = MockUserCostum().._uid = documentReference.id;
     userCredential = MockUserCredential(mockUser);
 
     remoteDataSource = AuthRemoteDataSrcImpl(

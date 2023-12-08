@@ -1,6 +1,12 @@
 import 'package:education_app/core/common/app/providers/user_provider.dart';
+import 'package:education_app/core/extensions/context_container.dart';
+import 'package:education_app/core/res/colours.dart';
+import 'package:education_app/core/services/injections.dart';
+import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
+import 'package:education_app/src/course/presentation/widgets/add_course_sheet.dart';
 import 'package:education_app/src/profile/presentation/widgets/user_info_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:provider/provider.dart';
 
@@ -72,6 +78,37 @@ class ProfileBody extends StatelessWidget {
               tittle: 'Following',
               count: user.followings.length.toString(),
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            if (context.currentUser!.isAdmin) ...[
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colours.primaryColour,
+                    foregroundColor: Colors.white,
+                  ),
+                  icon: const Icon(IconlyLight.paper_upload),
+                  label: const Text('Add Course'),
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                      backgroundColor: Colors.white,
+                      isScrollControlled: true,
+                      showDragHandle: true,
+                      elevation: 0,
+                      useSafeArea: true,
+                      context: context,
+                      builder: (_) => BlocProvider(
+                        create: (_) => sl<CourseCubit>(),
+                        child: const AddCurseSheet(),
+                      ),
+                    );
+                  },
+                ),
+              )
+            ]
           ],
         );
       },

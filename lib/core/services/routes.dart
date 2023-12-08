@@ -6,6 +6,8 @@ import 'package:education_app/src/authentication/presentation/bloc/authenticatio
 import 'package:education_app/src/authentication/presentation/views/forgot_password_view.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_in_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
+import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/presentation/views/course_detail_view.dart';
 import 'package:education_app/src/dashboard/presentation/views/dasboard_screen.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_board_local_data_source.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cb_cubit.dart';
@@ -63,6 +65,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case DashboardScreen.routeName:
       return _pageBuilder(
         (_) => const DashboardScreen(),
+        settings: settings,
+      );
+    case CourseDetailView.routeName:
+      return _pageBuilder(
+        (_) => CourseDetailView(
+          course: settings.arguments! as Course,
+        ),
         settings: settings,
       );
     case ForgotPassScreen.routeName:
