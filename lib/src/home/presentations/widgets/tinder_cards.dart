@@ -41,7 +41,7 @@ class _TinderCardsState extends State<TinderCards>
                 Positioned(
                   left: 0,
                   right: 0,
-                  bottom: 130,
+                  bottom: 120,
                   child: Padding(
                     padding: const EdgeInsets.only(
                       left: 20,

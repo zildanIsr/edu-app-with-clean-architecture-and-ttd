@@ -86,7 +86,7 @@ class _SignUpSreenState extends State<SignUpSreen> {
                         const Text(
                           'Already have an account?',
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                         Baseline(
@@ -102,7 +102,7 @@ class _SignUpSreenState extends State<SignUpSreen> {
                             child: const Text(
                               'Login account',
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                               ),
                             ),
                           ),

@@ -21,7 +21,7 @@ class CourseTile extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Hero(
-                  tag: 'image-course-hero',
+                  tag: 'image-course-hero-${course.id}',
                   transitionOnUserGestures: true,
                   child: Image.network(
                     course.image!,
