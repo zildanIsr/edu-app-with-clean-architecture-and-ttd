@@ -115,7 +115,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
           ],
-        )
+        ),
       ],
     );
   }

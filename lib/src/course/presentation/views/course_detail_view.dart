@@ -93,7 +93,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                       subtitle: 'Watch our tutorial videos for ${course.title}',
                       onTap: () => Navigator.of(context)
                           .pushNamed('/unknown-route', arguments: course),
-                    )
+                    ),
                   ],
                   if (course.numberOfExams > 0) ...[
                     const SizedBox(
@@ -105,7 +105,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                       subtitle: 'Take our exam for ${course.title}',
                       onTap: () => Navigator.of(context)
                           .pushNamed('/unknown-route', arguments: course),
-                    )
+                    ),
                   ],
                   if (course.numberOfExams > 0) ...[
                     const SizedBox(
@@ -119,10 +119,10 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                           '${course.title}',
                       onTap: () => Navigator.of(context)
                           .pushNamed('/unknown-route', arguments: course),
-                    )
+                    ),
                   ],
                 ],
-              )
+              ),
             ],
           ),
         ),

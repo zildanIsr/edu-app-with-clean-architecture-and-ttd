@@ -52,7 +52,7 @@ class _SignInFormState extends State<SignInForm> {
                 color: Colors.grey,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

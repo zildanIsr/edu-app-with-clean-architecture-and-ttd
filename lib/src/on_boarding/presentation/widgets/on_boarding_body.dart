@@ -67,10 +67,10 @@ class OnBoardingBody extends StatelessWidget {
                     fontFamily: Fonts.aeonik,
                   ),
                 ),
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

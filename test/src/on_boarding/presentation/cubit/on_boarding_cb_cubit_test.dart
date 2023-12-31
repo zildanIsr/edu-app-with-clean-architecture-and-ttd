@@ -96,7 +96,7 @@ void main() {
       act: (cubit) => cubit.checkIfUserFirstTime(),
       expect: () => const [
         OnCheckingIfUserIsFirstTime(),
-        OnBoardingStatus(isFirstTime: false)
+        OnBoardingStatus(isFirstTime: false),
       ],
       verify: (_) {
         verify(
@@ -123,7 +123,7 @@ void main() {
       act: (cubit) => cubit.checkIfUserFirstTime(),
       expect: () => const [
         OnCheckingIfUserIsFirstTime(),
-        OnBoardingStatus(isFirstTime: true)
+        OnBoardingStatus(isFirstTime: true),
       ],
       verify: (_) {
         verify(

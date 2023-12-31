@@ -51,7 +51,7 @@ class LocalUser extends Equatable {
         groupIds.length,
         enrolledCourseIds.length,
         followers.length,
-        followings.length
+        followings.length,
       ];
 
   @override

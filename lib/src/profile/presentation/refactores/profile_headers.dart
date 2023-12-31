@@ -54,7 +54,7 @@ class ProfileHeader extends StatelessWidget {
                     color: Colours.neutralTextColour,
                   ),
                 ),
-              )
+              ),
             ],
             const SizedBox(
               height: 16,

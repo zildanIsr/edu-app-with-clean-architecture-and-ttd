@@ -109,7 +109,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                         action: UpdateUserAction.password,
                         data: jsonEncode({
                           'oldPassword': oldPasswordController.text.trim(),
-                          'newPassword': passwordController.text.trim()
+                          'newPassword': passwordController.text.trim(),
                         }),
                       ),
                     );
@@ -177,7 +177,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           );
                         },
                       ),
-              )
+              ),
             ],
           ),
           body: Container(
@@ -230,7 +230,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   ? Icons.edit
                                   : Icons.add_a_photo_rounded,
                             ),
-                          )
+                          ),
                         ],
                       ),
                     );

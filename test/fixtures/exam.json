@@ -1,0 +1,24 @@
+{
+  "id": "_exam.id",
+  "courseId": "_exam.courseId",
+  "title": "exam.title",
+  "description": "exam.description",
+  "timeLimit": 0,
+  "imageUrl": null,
+  "questions": [
+    {
+      "id": "_exam.id",
+      "courseId": "_exam.courseId",
+      "examId": "_exam.examId",
+      "questionText": "_exam.questionText",
+      "choices": [
+        {
+          "questionId": "_empty.questionId",
+          "identifier": "_empty.identifier",
+          "choiceAnswer": "_empty.choiceAnswer"
+        }
+      ],
+      "correctAnswer": "_exam.correcAnswer"
+    }
+  ]
+}

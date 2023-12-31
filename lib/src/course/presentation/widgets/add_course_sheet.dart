@@ -166,7 +166,7 @@ class _AddCurseSheetState extends State<AddCurseSheet> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

@@ -107,8 +107,8 @@ class ProfileBody extends StatelessWidget {
                     );
                   },
                 ),
-              )
-            ]
+              ),
+            ],
           ],
         );
       },

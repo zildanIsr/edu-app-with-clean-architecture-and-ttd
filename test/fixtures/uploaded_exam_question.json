@@ -1,0 +1,13 @@
+{
+  "id": "_exam.id",
+  "courseId": "_exam.courseId",
+  "examId": "_exam.examId",
+  "question": "_exam.question",
+  "answers": [
+    {
+      "identifier": "_empty.identifier",
+      "Answer": "_empty.choiceAnswer"
+    }
+  ],
+  "correct_answer": "_exam.correcAnswer"
+}

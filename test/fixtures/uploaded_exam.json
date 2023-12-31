@@ -1,0 +1,21 @@
+{
+  "id": "_exam.id",
+  "courseId": "_exam.courseId",
+  "title": "exam.title",
+  "image_url": "",
+  "Description": "exam.description",
+  "time_seconds": 0,
+  "questions": [
+    {
+      "id": "_exam.id",
+      "question": "_exam.question",
+      "answers": [
+        {
+          "identifier": "_empty.identifier",
+          "Answer": "_empty.Answer"
+        }
+      ],
+      "correct_answer": "_exam.correcAnswer"
+    }
+  ]
+}

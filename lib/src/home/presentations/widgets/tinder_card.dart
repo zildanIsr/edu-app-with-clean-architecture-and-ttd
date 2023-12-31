@@ -31,7 +31,7 @@ class Tindercard extends StatelessWidget {
                 color: Colors.black.withOpacity(.15),
                 offset: const Offset(0, 5),
                 blurRadius: 10,
-              )
+              ),
             ],
           ),
           child: isFirst
@@ -64,9 +64,9 @@ class Tindercard extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 14,
                           ),
-                        )
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 )
               : null,

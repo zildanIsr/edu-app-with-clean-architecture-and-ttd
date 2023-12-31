@@ -145,7 +145,7 @@ class _SignUpSreenState extends State<SignUpSreen> {
                                 );
                           }
                         },
-                      )
+                      ),
                   ],
                 ),
               ),

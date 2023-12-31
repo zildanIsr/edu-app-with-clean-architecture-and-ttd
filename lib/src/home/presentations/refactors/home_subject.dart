@@ -50,7 +50,7 @@ class HomeSubjects extends StatelessWidget {
                 ),
               )
               .toList(),
-        )
+        ),
       ],
     );
   }

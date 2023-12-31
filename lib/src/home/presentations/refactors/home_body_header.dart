@@ -30,7 +30,7 @@ class HomeBodyHeader extends StatelessWidget {
                         : 15,
             right: -14,
             child: const TinderCards(),
-          )
+          ),
         ],
       ),
     );
