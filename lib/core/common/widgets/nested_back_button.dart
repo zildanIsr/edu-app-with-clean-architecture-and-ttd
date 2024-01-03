@@ -6,13 +6,13 @@ class NestedBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      onPopInvoked: (_) async {
         try {
           context.pop();
-          return false;
+          return;
         } catch (_) {
-          return true;
+          return;
         }
       },
       child: IconButton(

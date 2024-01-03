@@ -36,6 +36,8 @@ class ExamModel extends Exam {
         description: map['description'] as String,
         timeLimit: (map['timeLimit'] as num).toInt(),
         imageUrl: map['imageUrl'] as String?,
+        // ignore: avoid_redundant_argument_values
+        questions: null,
       );
 
   factory ExamModel.fromUploadMap(DataMap map) => ExamModel(

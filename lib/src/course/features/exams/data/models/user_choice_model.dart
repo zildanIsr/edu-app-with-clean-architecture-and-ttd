@@ -10,9 +10,9 @@ class UserChoiceModel extends UserChoice {
 
   const UserChoiceModel.empty()
       : this(
+          userChoice: '_test.answer',
           questionId: '_test.questionId',
-          correctChoice: '_test.correctChoice',
-          userChoice: '_test.userChoice',
+          correctChoice: '_test.answer',
         );
 
   factory UserChoiceModel.fromMap(Map<String, dynamic> map) {

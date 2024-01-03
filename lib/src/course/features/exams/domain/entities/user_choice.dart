@@ -9,9 +9,9 @@ class UserChoice extends Equatable {
 
   const UserChoice.empty()
       : this(
-          questionId: '_test.questionId',
-          correctChoice: '_test.correctChoice',
           userChoice: '_test.userChoice',
+          questionId: '_test.questionId',
+          correctChoice: '_test.userChoice',
         );
 
   final String userChoice;
