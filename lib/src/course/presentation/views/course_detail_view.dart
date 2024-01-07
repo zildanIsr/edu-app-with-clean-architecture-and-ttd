@@ -6,6 +6,7 @@ import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/src/course/data/models/course_model.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class CourseDetailView extends StatefulWidget {
   const CourseDetailView({required this.course, super.key});
@@ -35,95 +36,131 @@ class _CourseDetailViewState extends State<CourseDetailView> {
       body: Container(
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
-          child: ListView(
-            padding: const EdgeInsets.all(20),
-            children: [
-              SizedBox(
-                height: context.height * .3,
-                child: Center(
-                  child: widget.course.image != null
-                      ? Hero(
-                          tag: 'image-course-hero-${widget.course.id}',
-                          child: Image.network(widget.course.image!),
-                        )
-                      : Image.asset(MediaRes.casualMeditationVect),
+          child: AnimationLimiter(
+            child: ListView(
+              padding: const EdgeInsets.all(20),
+              children: [
+                SizedBox(
+                  height: context.height * .3,
+                  child: Center(
+                    child: widget.course.image != null
+                        ? Hero(
+                            tag: 'image-course-hero-${widget.course.id}',
+                            child: Image.network(widget.course.image!),
+                          )
+                        : Image.asset(MediaRes.casualMeditationVect),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.course.title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ExpandedbleText(
-                    context,
-                    text: widget.course.description ?? 'No description yet',
-                  ),
-                  if (course.numberOfExams > 0 ||
-                      course.numberOfMaterials > 0 ||
-                      course.numberOfVideos > 0) ...[
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                      'Subject Details',
-                      style: TextStyle(
+                const SizedBox(
+                  height: 20,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.course.title,
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ],
-                  if (course.numberOfVideos > 0) ...[
                     const SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
-                    CourseInfoTile(
-                      image: MediaRes.videoPlaceholderImg,
-                      title: '${course.numberOfVideos} Video(s)',
-                      subtitle: 'Watch our tutorial videos for ${course.title}',
-                      onTap: () => Navigator.of(context)
-                          .pushNamed('/unknown-route', arguments: course),
+                    ExpandedbleText(
+                      context,
+                      text: widget.course.description ?? 'No description yet',
                     ),
+                    if (course.numberOfExams > 0 ||
+                        course.numberOfMaterials > 0 ||
+                        course.numberOfVideos > 0) ...[
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text(
+                        'Subject Details',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                    if (course.numberOfVideos > 0) ...[
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      AnimationConfiguration.staggeredList(
+                        position: 0,
+                        duration: const Duration(milliseconds: 375),
+                        child: SlideAnimation(
+                          horizontalOffset: 100,
+                          child: FadeInAnimation(
+                            child: CourseInfoTile(
+                              image: MediaRes.videoPlaceholderImg,
+                              title: '${course.numberOfVideos} Video(s)',
+                              subtitle: 'Watch our tutorial videos for '
+                                  '${course.title}',
+                              onTap: () => Navigator.of(context).pushNamed(
+                                '/unknown-route',
+                                arguments: course,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    if (course.numberOfExams > 0) ...[
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      AnimationConfiguration.staggeredList(
+                        position: 1,
+                        duration: const Duration(milliseconds: 375),
+                        child: SlideAnimation(
+                          horizontalOffset: 100,
+                          child: FadeInAnimation(
+                            child: CourseInfoTile(
+                              image: MediaRes.videoPlaceholderImg,
+                              title: '${course.numberOfExams} Exam(s)',
+                              subtitle: 'Take our exam for ${course.title}',
+                              onTap: () => Navigator.of(context).pushNamed(
+                                '/unknown-route',
+                                arguments: course,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    if (course.numberOfExams > 0) ...[
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      AnimationConfiguration.staggeredList(
+                        position: 2,
+                        duration: const Duration(milliseconds: 375),
+                        child: SlideAnimation(
+                          horizontalOffset: 100,
+                          child: FadeInAnimation(
+                            child: CourseInfoTile(
+                              image: MediaRes.videoPlaceholderImg,
+                              title: '${course.numberOfMaterials} Material(s)',
+                              subtitle: 'Access to '
+                                  '${course.numberOfMaterials.estimate} '
+                                  'materials for ${course.title}',
+                              onTap: () => Navigator.of(context).pushNamed(
+                                '/unknown-route',
+                                arguments: course,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
-                  if (course.numberOfExams > 0) ...[
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CourseInfoTile(
-                      image: MediaRes.videoPlaceholderImg,
-                      title: '${course.numberOfExams} Exam(s)',
-                      subtitle: 'Take our exam for ${course.title}',
-                      onTap: () => Navigator.of(context)
-                          .pushNamed('/unknown-route', arguments: course),
-                    ),
-                  ],
-                  if (course.numberOfExams > 0) ...[
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    CourseInfoTile(
-                      image: MediaRes.videoPlaceholderImg,
-                      title: '${course.numberOfMaterials} Material(s)',
-                      subtitle: 'Access to '
-                          '${course.numberOfMaterials.estimate} materials for '
-                          '${course.title}',
-                      onTap: () => Navigator.of(context)
-                          .pushNamed('/unknown-route', arguments: course),
-                    ),
-                  ],
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

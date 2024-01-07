@@ -24,7 +24,11 @@ class CourseInfoTile extends StatelessWidget {
           SizedBox(
             height: 48,
             width: 48,
-            child: Image.asset(image),
+            child: Image.asset(
+              image,
+              cacheWidth: 48,
+              cacheHeight: 48,
+            ),
           ),
           const SizedBox(
             width: 10,
