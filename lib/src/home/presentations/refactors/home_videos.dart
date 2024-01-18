@@ -1,5 +1,6 @@
 import 'package:education_app/core/common/views/loading.dart';
 import 'package:education_app/core/common/widgets/not_found_text.dart';
+import 'package:education_app/core/common/widgets/video_tile.dart';
 import 'package:education_app/core/extensions/context_container.dart';
 import 'package:education_app/core/utils/core_utils.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/videos_cb_cubit.dart';
@@ -54,7 +55,11 @@ class _HomeVideosState extends State<HomeVideos> {
               const SizedBox(
                 height: 20,
               ),
-              for (final video in state.videos.take(5)) const Placeholder(),
+              for (final video in state.videos.take(5))
+                VideoTile(
+                  video,
+                  tappable: true,
+                ),
             ],
           );
         }

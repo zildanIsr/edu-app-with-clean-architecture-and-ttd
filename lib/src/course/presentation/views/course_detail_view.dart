@@ -5,6 +5,7 @@ import 'package:education_app/core/extensions/num_extension.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/src/course/data/models/course_model.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/features/videos/presentation/views/course_videos_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -21,11 +22,7 @@ class CourseDetailView extends StatefulWidget {
 class _CourseDetailViewState extends State<CourseDetailView> {
   @override
   Widget build(BuildContext context) {
-    final course = (widget.course as CourseModel).copyWith(
-      numberOfExams: 2,
-      numberOfVideos: 2,
-      numberOfMaterials: 20,
-    );
+    final course = widget.course as CourseModel;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -96,12 +93,12 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                           horizontalOffset: 100,
                           child: FadeInAnimation(
                             child: CourseInfoTile(
-                              image: MediaRes.videoPlaceholderImg,
+                              image: MediaRes.courseInfoVideo,
                               title: '${course.numberOfVideos} Video(s)',
                               subtitle: 'Watch our tutorial videos for '
                                   '${course.title}',
                               onTap: () => Navigator.of(context).pushNamed(
-                                '/unknown-route',
+                                CourseVideosView.routeName,
                                 arguments: course,
                               ),
                             ),
@@ -120,7 +117,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                           horizontalOffset: 100,
                           child: FadeInAnimation(
                             child: CourseInfoTile(
-                              image: MediaRes.videoPlaceholderImg,
+                              image: MediaRes.courseInfoExam,
                               title: '${course.numberOfExams} Exam(s)',
                               subtitle: 'Take our exam for ${course.title}',
                               onTap: () => Navigator.of(context).pushNamed(
@@ -143,7 +140,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                           horizontalOffset: 100,
                           child: FadeInAnimation(
                             child: CourseInfoTile(
-                              image: MediaRes.videoPlaceholderImg,
+                              image: MediaRes.courseInfoMaterial,
                               title: '${course.numberOfMaterials} Material(s)',
                               subtitle: 'Access to '
                                   '${course.numberOfMaterials.estimate} '

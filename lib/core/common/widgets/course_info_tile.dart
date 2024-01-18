@@ -18,16 +18,15 @@ class CourseInfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Row(
         children: [
           SizedBox(
-            height: 48,
-            width: 48,
+            height: 50,
+            width: 50,
             child: Image.asset(
               image,
-              cacheWidth: 48,
-              cacheHeight: 48,
             ),
           ),
           const SizedBox(

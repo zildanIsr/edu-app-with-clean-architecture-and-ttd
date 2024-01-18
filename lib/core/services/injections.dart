@@ -30,6 +30,15 @@ import 'package:education_app/src/course/features/videos/domain/usecases/add_vid
 import 'package:education_app/src/course/features/videos/domain/usecases/get_videos.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/videos_cb_cubit.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
+import 'package:education_app/src/notification/data/datasource/notification_remote_data_src.dart';
+import 'package:education_app/src/notification/data/repos/notification_repo_impl.dart';
+import 'package:education_app/src/notification/domain/repos/notification_repo.dart';
+import 'package:education_app/src/notification/domain/usecases/clear.dart';
+import 'package:education_app/src/notification/domain/usecases/clear_all.dart';
+import 'package:education_app/src/notification/domain/usecases/get_notification.dart';
+import 'package:education_app/src/notification/domain/usecases/mark_as_read.dart';
+import 'package:education_app/src/notification/domain/usecases/send_notification.dart';
+import 'package:education_app/src/notification/presentations/cubit/notifications_cubit.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_board_local_data_source.dart';
 import 'package:education_app/src/on_boarding/data/repository/on_board_repo_impl.dart';
 import 'package:education_app/src/on_boarding/domain/repositories/on_boarding_repo.dart';

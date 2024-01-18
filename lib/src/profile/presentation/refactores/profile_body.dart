@@ -4,6 +4,7 @@ import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/core/services/injections.dart';
 import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/course/presentation/widgets/add_course_sheet.dart';
+import 'package:education_app/src/notification/presentations/cubit/notifications_cubit.dart';
 import 'package:education_app/src/profile/presentation/widgets/user_info_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,8 +101,15 @@ class ProfileBody extends StatelessWidget {
                       elevation: 0,
                       useSafeArea: true,
                       context: context,
-                      builder: (_) => BlocProvider(
-                        create: (_) => sl<CourseCubit>(),
+                      builder: (_) => MultiBlocProvider(
+                        providers: [
+                          BlocProvider<CourseCubit>(
+                            create: (_) => sl<CourseCubit>(),
+                          ),
+                          BlocProvider<NotificationsCubit>(
+                            create: (_) => sl<NotificationsCubit>(),
+                          ),
+                        ],
                         child: const AddCurseSheet(),
                       ),
                     );

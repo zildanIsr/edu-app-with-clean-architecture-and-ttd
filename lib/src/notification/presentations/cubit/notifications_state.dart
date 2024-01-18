@@ -13,6 +13,10 @@ class ClearingNotifications extends NotificationsState {
   const ClearingNotifications();
 }
 
+class NotificationCleared extends NotificationsState {
+  const NotificationCleared();
+}
+
 class SendingNotification extends NotificationsState {
   const SendingNotification();
 }

@@ -1,4 +1,5 @@
 import 'package:education_app/core/common/app/providers/course_of_the_day_notifier.dart';
+import 'package:education_app/core/common/app/providers/notification_notifier.dart';
 import 'package:education_app/core/common/app/providers/user_provider.dart';
 import 'package:education_app/core/res/colours.dart';
 import 'package:education_app/core/res/fonts.dart';
@@ -9,6 +10,7 @@ import 'package:education_app/src/dashboard/presentation/providers/dashboard_con
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CourseOfTheDayNotifier(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NotificationsNotifier(sl<SharedPreferences>()),
         ),
       ],
       child: MaterialApp(

@@ -8,6 +8,36 @@ Future<void> init() async {
   await _courseInit();
   await _videosInit();
   await _examInit();
+  await _notificationInit();
+}
+
+Future<void> _notificationInit() async {
+  sl
+    ..registerFactory(
+      () => NotificationsCubit(
+        clear: sl(),
+        clearAll: sl(),
+        getNotifications: sl(),
+        markAsRead: sl(),
+        sendNotification: sl(),
+      ),
+    )
+    ..registerLazySingleton(() => Clear(sl()))
+    ..registerLazySingleton(() => ClearAll(sl()))
+    ..registerLazySingleton(() => GetNotifications(sl()))
+    ..registerLazySingleton(() => MarkAsRead(sl()))
+    ..registerLazySingleton(() => SendNotification(sl()))
+    ..registerLazySingleton<NotificationRepo>(
+      () => NotificationRepoImpl(
+        sl(),
+      ),
+    )
+    ..registerLazySingleton<NotificationRemoteDataSrc>(
+      () => NotificationRemoteDataSrcImpl(
+        auth: sl(),
+        firestore: sl(),
+      ),
+    );
 }
 
 Future<void> _examInit() async {

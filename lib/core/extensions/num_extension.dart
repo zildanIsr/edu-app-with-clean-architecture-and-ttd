@@ -1,4 +1,4 @@
-extension IntExt on num {
+extension NumExt on num {
   String get estimate {
     if (this < 10) return '$this';
     var data = this - (this % 10);

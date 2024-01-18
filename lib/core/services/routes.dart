@@ -7,8 +7,18 @@ import 'package:education_app/src/authentication/presentation/views/forgot_passw
 import 'package:education_app/src/authentication/presentation/views/sign_in_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/add_exam_view.dart';
+import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
+import 'package:education_app/src/course/features/materials/presentation/views/add_materials_view.dart';
+import 'package:education_app/src/course/features/videos/presentation/cubit/videos_cb_cubit.dart';
+import 'package:education_app/src/course/features/videos/presentation/views/add_video_view.dart';
+import 'package:education_app/src/course/features/videos/presentation/views/course_videos_view.dart';
+import 'package:education_app/src/course/features/videos/presentation/views/video_player_view.dart';
+import 'package:education_app/src/course/presentation/cubit/course_cubit.dart';
 import 'package:education_app/src/course/presentation/views/course_detail_view.dart';
 import 'package:education_app/src/dashboard/presentation/views/dasboard_screen.dart';
+import 'package:education_app/src/notification/presentations/cubit/notifications_cubit.dart';
 import 'package:education_app/src/on_boarding/data/datasources/on_board_local_data_source.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cb_cubit.dart';
 import 'package:education_app/src/on_boarding/presentation/views/on_boarding_view.dart';
@@ -79,6 +89,78 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => BlocProvider(
           create: (_) => sl<AuthenticationBloc>(),
           child: const ForgotPassScreen(),
+        ),
+        settings: settings,
+      );
+    case AddVideoView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => sl<CourseCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<VideosCbCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<NotificationsCubit>(),
+            ),
+          ],
+          child: const AddVideoView(),
+        ),
+        settings: settings,
+      );
+    case AddMaterialView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => sl<CourseCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<MaterialCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<NotificationsCubit>(),
+            ),
+          ],
+          child: const AddMaterialView(),
+        ),
+        settings: settings,
+      );
+    case AddExamView.routeName:
+      return _pageBuilder(
+        (_) => MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) => sl<CourseCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<ExamCubit>(),
+            ),
+            BlocProvider(
+              create: (_) => sl<NotificationsCubit>(),
+            ),
+          ],
+          child: const AddExamView(),
+        ),
+        settings: settings,
+      );
+    case CourseVideosView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<VideosCbCubit>(),
+          child: CourseVideosView(settings.arguments! as Course),
+        ),
+        settings: settings,
+      );
+    case VideoPlayerView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<VideosCbCubit>(),
+          child: VideoPlayerView(
+            videoURL: settings.arguments! as String,
+          ),
         ),
         settings: settings,
       );

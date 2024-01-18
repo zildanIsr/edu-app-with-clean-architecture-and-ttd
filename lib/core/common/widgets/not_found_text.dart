@@ -13,7 +13,7 @@ class NotFoundText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Text(
           text,
           textAlign: TextAlign.center,
