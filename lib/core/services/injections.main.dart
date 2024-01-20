@@ -7,6 +7,7 @@ Future<void> init() async {
   await _authInit();
   await _courseInit();
   await _videosInit();
+  await _materialInit();
   await _examInit();
   await _notificationInit();
 }
@@ -36,6 +37,26 @@ Future<void> _notificationInit() async {
       () => NotificationRemoteDataSrcImpl(
         auth: sl(),
         firestore: sl(),
+      ),
+    );
+}
+
+Future<void> _materialInit() async {
+  sl
+    ..registerFactory(
+      () => MaterialCubit(
+        addMaterial: sl(),
+        getMaterials: sl(),
+      ),
+    )
+    ..registerLazySingleton(() => AddMaterial(sl()))
+    ..registerLazySingleton(() => GetMaterials(sl()))
+    ..registerLazySingleton<MaterialRepo>(() => MaterialRepoImpl(sl()))
+    ..registerLazySingleton<MaterialRemoteDataSrc>(
+      () => MaterialRemoteDataSrcImpl(
+        auth: sl(),
+        firestore: sl(),
+        storage: sl(),
       ),
     );
 }

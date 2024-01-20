@@ -164,6 +164,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
+
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),

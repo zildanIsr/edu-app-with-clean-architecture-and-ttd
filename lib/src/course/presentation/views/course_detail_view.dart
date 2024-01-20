@@ -129,7 +129,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                         ),
                       ),
                     ],
-                    if (course.numberOfExams > 0) ...[
+                    if (course.numberOfMaterials > 0) ...[
                       const SizedBox(
                         height: 10,
                       ),
