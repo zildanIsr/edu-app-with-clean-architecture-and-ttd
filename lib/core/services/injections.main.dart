@@ -58,7 +58,8 @@ Future<void> _materialInit() async {
         firestore: sl(),
         storage: sl(),
       ),
-    );
+    )
+    ..registerFactory(() => ResourceController(storage: sl(), prefs: sl()));
 }
 
 Future<void> _examInit() async {

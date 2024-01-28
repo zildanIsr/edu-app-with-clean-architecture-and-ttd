@@ -1,5 +1,7 @@
+import 'package:education_app/core/common/app/providers/tab_navigator.dart';
 import 'package:education_app/core/extensions/context_container.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NestedBackButton extends StatelessWidget {
   const NestedBackButton({super.key});
@@ -7,12 +9,16 @@ class NestedBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (_) async {
-        try {
-          context.pop();
-          return;
-        } catch (_) {
-          return;
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (!didPop) {
+          try {
+            context.read<TabNavigator>().pop();
+          } catch (_) {
+            if (Navigator.of(context).canPop()) {
+              Navigator.of(context).pop();
+            }
+          }
         }
       },
       child: IconButton(

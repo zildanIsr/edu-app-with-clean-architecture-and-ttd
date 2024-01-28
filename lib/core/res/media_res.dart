@@ -22,7 +22,7 @@ class MediaRes {
   static const casualScienceVect = '$_baseVectors/casual_science.png';
   static const casualReadingVect = '$_baseVectors/casual_reading.png';
   static const microscopeVect = '$_baseVectors/microscope.png';
-  static const streamCupVect = '$_baseVectors/stream_cup.jpg';
+  static const streamCupVect = '$_baseVectors/steam_cup.png';
   static const turquoisePotVect = '$_baseVectors/turquoise_pot_plant.png';
 
   //icons

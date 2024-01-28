@@ -5,6 +5,8 @@ import 'package:education_app/core/extensions/num_extension.dart';
 import 'package:education_app/core/res/media_res.dart';
 import 'package:education_app/src/course/data/models/course_model.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/course_exam_view.dart';
+import 'package:education_app/src/course/features/materials/presentation/views/course_material_view.dart';
 import 'package:education_app/src/course/features/videos/presentation/views/course_videos_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -121,7 +123,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                               title: '${course.numberOfExams} Exam(s)',
                               subtitle: 'Take our exam for ${course.title}',
                               onTap: () => Navigator.of(context).pushNamed(
-                                '/unknown-route',
+                                CourseExamsView.routeName,
                                 arguments: course,
                               ),
                             ),
@@ -146,7 +148,7 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                                   '${course.numberOfMaterials.estimate} '
                                   'materials for ${course.title}',
                               onTap: () => Navigator.of(context).pushNamed(
-                                '/unknown-route',
+                                CourseMaterialView.routeName,
                                 arguments: course,
                               ),
                             ),

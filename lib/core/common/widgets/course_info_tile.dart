@@ -23,10 +23,11 @@ class CourseInfoTile extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            height: 50,
-            width: 50,
-            child: Image.asset(
-              image,
+            height: 48,
+            width: 48,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 2),
+              child: Transform.scale(scale: 1.48, child: Image.asset(image)),
             ),
           ),
           const SizedBox(

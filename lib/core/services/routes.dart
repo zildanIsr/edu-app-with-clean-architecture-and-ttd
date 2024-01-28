@@ -7,10 +7,17 @@ import 'package:education_app/src/authentication/presentation/views/forgot_passw
 import 'package:education_app/src/authentication/presentation/views/sign_in_screen.dart';
 import 'package:education_app/src/authentication/presentation/views/sign_up_screen.dart';
 import 'package:education_app/src/course/domain/entities/course.dart';
+import 'package:education_app/src/course/features/exams/domain/entities/exam.dart';
+import 'package:education_app/src/course/features/exams/domain/entities/user_exam.dart';
+import 'package:education_app/src/course/features/exams/presentation/app/providers/exam_controller.dart';
 import 'package:education_app/src/course/features/exams/presentation/cubit/exam_cubit.dart';
 import 'package:education_app/src/course/features/exams/presentation/views/add_exam_view.dart';
-import 'package:education_app/src/course/features/materials/presentation/cubit/material_cubit.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/course_exam_detail.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/course_exam_view.dart';
+import 'package:education_app/src/course/features/exams/presentation/views/exam_view.dart';
+import 'package:education_app/src/course/features/materials/presentation/app/cubit/material_cubit.dart';
 import 'package:education_app/src/course/features/materials/presentation/views/add_materials_view.dart';
+import 'package:education_app/src/course/features/materials/presentation/views/course_material_view.dart';
 import 'package:education_app/src/course/features/videos/presentation/cubit/videos_cb_cubit.dart';
 import 'package:education_app/src/course/features/videos/presentation/views/add_video_view.dart';
 import 'package:education_app/src/course/features/videos/presentation/views/course_videos_view.dart';
@@ -22,9 +29,11 @@ import 'package:education_app/src/notification/presentations/cubit/notifications
 import 'package:education_app/src/on_boarding/data/datasources/on_board_local_data_source.dart';
 import 'package:education_app/src/on_boarding/presentation/cubit/on_boarding_cb_cubit.dart';
 import 'package:education_app/src/on_boarding/presentation/views/on_boarding_view.dart';
+import 'package:education_app/src/quick_access/presentations/views/exam_history_detail_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -81,6 +90,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageBuilder(
         (_) => CourseDetailView(
           course: settings.arguments! as Course,
+        ),
+        settings: settings,
+      );
+    case ExamHistoryDetailScreen.routeName:
+      return _pageBuilder(
+        (_) => ExamHistoryDetailScreen(
+          settings.arguments! as UserExam,
         ),
         settings: settings,
       );
@@ -164,7 +180,42 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         ),
         settings: settings,
       );
-
+    case CourseMaterialView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<MaterialCubit>(),
+          child: CourseMaterialView(settings.arguments! as Course),
+        ),
+        settings: settings,
+      );
+    case CourseExamsView.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<ExamCubit>(),
+          child: CourseExamsView(settings.arguments! as Course),
+        ),
+        settings: settings,
+      );
+    case ExamViews.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<ExamCubit>(),
+          child: ChangeNotifierProvider(
+            create: (context) =>
+                ExamController(exam: settings.arguments! as Exam),
+            child: const ExamViews(),
+          ),
+        ),
+        settings: settings,
+      );
+    case CourseDetailExam.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => sl<ExamCubit>(),
+          child: CourseDetailExam(settings.arguments! as Exam),
+        ),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const PageUnderConstruction(),
