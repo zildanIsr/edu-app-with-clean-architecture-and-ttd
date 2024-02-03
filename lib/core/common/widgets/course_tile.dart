@@ -2,9 +2,15 @@ import 'package:education_app/src/course/domain/entities/course.dart';
 import 'package:flutter/material.dart';
 
 class CourseTile extends StatelessWidget {
-  const CourseTile({required this.course, super.key, this.onTap});
+  const CourseTile({
+    required this.course,
+    super.key,
+    this.onTap,
+    this.isHero = false,
+  });
 
   final Course course;
+  final bool isHero;
   final VoidCallback? onTap;
 
   @override
@@ -20,14 +26,19 @@ class CourseTile extends StatelessWidget {
               width: 68,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Hero(
-                  tag: 'image-course-hero-${course.id}',
-                  transitionOnUserGestures: true,
-                  child: Image.network(
-                    course.image!,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                child: isHero
+                    ? Hero(
+                        tag: 'image-course-hero-${course.id}',
+                        transitionOnUserGestures: true,
+                        child: Image.network(
+                          course.image!,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : Image.network(
+                        course.image!,
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
             const SizedBox(

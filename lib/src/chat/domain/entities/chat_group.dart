@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 class Group extends Equatable {
@@ -13,7 +12,7 @@ class Group extends Equatable {
     this.lastMessageSenderName,
   });
 
-  Group.emty()
+  Group.empty()
       : this(
           id: '_empty.id',
           name: '_empty.name',

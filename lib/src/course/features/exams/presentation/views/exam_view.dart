@@ -82,21 +82,28 @@ class _ExamViewsState extends State<ExamViews> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     examController = context.read<ExamController>();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPersistentFrameCallback((_) {
-      examController.addListener(() {
-        if (examController.isTimeUp) submitExam();
-      });
+    examController.addListener(() {
+      if (examController.isTimeUp) submitExam();
     });
   }
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPersistentFrameCallback((_) {
+  //     examController.addListener(() {
+  //       if (examController.isTimeUp) submitExam();
+  //     });
+  //   });
+  // }
+
   @override
   void dispose() {
-    examController.dispose();
+    examController
+      ..dispose()
+      ..removeListener(() {
+        if (examController.isTimeUp) submitExam();
+      });
     super.dispose();
   }
 

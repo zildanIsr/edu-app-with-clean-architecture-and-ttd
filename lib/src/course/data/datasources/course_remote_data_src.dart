@@ -65,6 +65,7 @@ class CourseRemoteDataSrcImpl implements CourseRemoteDataSrc {
       final group = GroupModel(
         id: groupRef.id,
         name: course.title,
+        groupImageUrl: courseModel.image,
         courseId: courseRef.id,
         members: const [],
       );

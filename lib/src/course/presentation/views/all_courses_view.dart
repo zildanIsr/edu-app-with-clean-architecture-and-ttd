@@ -49,6 +49,7 @@ class AllCourseView extends StatelessWidget {
                       .map(
                         (course) => CourseTile(
                           course: course,
+                          isHero: true,
                           onTap: () => Navigator.of(context).pushNamed(
                             CourseDetailView.routeName,
                             arguments: course,

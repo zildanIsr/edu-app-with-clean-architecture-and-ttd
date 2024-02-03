@@ -44,7 +44,8 @@ class _CourseDetailViewState extends State<CourseDetailView> {
                   child: Center(
                     child: widget.course.image != null
                         ? Hero(
-                            tag: 'image-course-hero-${widget.course.id}',
+                            tag: 'image-course-hero-${widget.course.title}'
+                                '-${widget.course.id}',
                             child: Image.network(widget.course.image!),
                           )
                         : Image.asset(MediaRes.casualMeditationVect),

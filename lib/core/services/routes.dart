@@ -200,9 +200,10 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _pageBuilder(
         (_) => BlocProvider(
           create: (_) => sl<ExamCubit>(),
-          child: ChangeNotifierProvider(
-            create: (context) =>
-                ExamController(exam: settings.arguments! as Exam),
+          child: ChangeNotifierProvider.value(
+            value: ExamController(
+              exam: settings.arguments! as Exam,
+            ),
             child: const ExamViews(),
           ),
         ),
